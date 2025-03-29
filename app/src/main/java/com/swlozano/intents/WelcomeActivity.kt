@@ -1,6 +1,7 @@
 package com.swlozano.intents
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +16,11 @@ class WelcomeActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        if (intent != null) {
+            val fullName = intent.getStringExtra(FULL_NAME_KEY)
+            findViewById<TextView>(R.id.welcome_text).text =
+                getString(R.string.welcome_text, fullName)
         }
     }
 }
